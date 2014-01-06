@@ -20,8 +20,8 @@ numgrad = zeros(size(theta));
 
 epsilon = 1e-4;
 for i=1:length(theta)
-	basis = zeros(size(theta));	basis(i)=1;
-	numgrad(i) = (J(theta + epsilon*basis) - J(theta - epsilon*basis)) / (2*epsilon);
+    basis = zeros(size(theta)); basis(i)=1;
+    numgrad(i) = (J(theta + epsilon*basis) - J(theta - epsilon*basis)) / (2*epsilon);
 end
 
 

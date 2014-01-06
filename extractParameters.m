@@ -14,7 +14,7 @@ for e=1:numEmbeddings
 end
 
 convolution_weights = reshape(theta(paramStartIndex+1:paramStartIndex+netconfig.convolutionSize*totalEmbeddingSize*netconfig.windowSize), ...
-							netconfig.convolutionSize, totalEmbeddingSize*netconfig.windowSize);
+                            netconfig.convolutionSize, totalEmbeddingSize*netconfig.windowSize);
 paramStartIndex = paramStartIndex+ netconfig.convolutionSize*(totalEmbeddingSize*netconfig.windowSize);
 convolution_bias = theta(paramStartIndex+1:paramStartIndex+netconfig.convolutionSize);
 paramStartIndex = paramStartIndex + netconfig.convolutionSize;

@@ -1,6 +1,6 @@
 PRECISION = 'double';
 
-wordVocabSize = 13;	% two padding + one empty
+wordVocabSize = 13; % two padding + one empty
 wordEmbeddingSize = 5;
 capsVocabSize = 3;
 capsEmbeddingSize = 2;
@@ -11,7 +11,7 @@ hiddenSize = 30;
 outputSize = 5;
 windowSize = 5;
 %{
-wordVocabSize = 100003;	% two padding + one empty
+wordVocabSize = 100003; % two padding + one empty
 wordEmbeddingSize = 50;
 capsVocabSize = 3;
 capsEmbeddingSize = 2;
@@ -44,9 +44,9 @@ trans_probs = [start_trans_probs trans_probs];
 
 theta = [embCell2params({wordEmbedding,capsEmbedding,relTagPosEmbedding}) ; convolution_weights(:) ; convolution_bias(:) ; convolution_to_hidden_weights(:) ; convolution_to_hidden_bias(:) ; output_weights(:) ; trans_probs(:)];
 modelOptions.netconfig.embeddingSizes = {[wordEmbeddingSize, wordVocabSize], ...
-										[capsEmbeddingSize, capsVocabSize], ...
-										[relTagPosEmbeddingSize, relTagPosVocabSize] ...
-										};
+                                        [capsEmbeddingSize, capsVocabSize], ...
+                                        [relTagPosEmbeddingSize, relTagPosVocabSize] ...
+                                        };
 modelOptions.netconfig.windowSize = windowSize;
 modelOptions.netconfig.convolutionSize = convolutionSize;
 modelOptions.netconfig.hiddenSize = hiddenSize;
@@ -81,11 +81,11 @@ costFunc = @(p) sennaCost(p, data, target, modelOptions);
 [~,grad] = costFunc(theta);
 %{
 for i=1:1000
-	[cost,grad] = costFunc(theta);
-	if rem(i,100)==0
-		fprintf('[%5d] %s: %f\n', i, getTime, cost);
-	end	
-	theta = theta - 0.1.*grad;
+    [cost,grad] = costFunc(theta);
+    if rem(i,100)==0
+        fprintf('[%5d] %s: %f\n', i, getTime, cost);
+    end 
+    theta = theta - 0.1.*grad;
 end
 %}
 
